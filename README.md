@@ -66,6 +66,31 @@ This project is designed to be flexible and extensible, making it easy to create
 
 ---
 
+## Running with Docker
+
+### Prerequisites
+
+- [Docker](https://www.docker.com/) installed on your system.
+
+### Steps
+
+1. Build the Docker image:
+   ```bash
+   docker build -t autoapi .
+   ```
+
+2. Run the Docker container:
+   ```bash
+   docker run -p 8000:8000 autoapi
+   ```
+
+   - The `-p 8000:8000` flag maps port 8000 on your machine to port 8000 in the container.
+
+3. Access the API:
+   - Open your browser and navigate to `http://127.0.0.1:8000/docs` for the Swagger UI.
+
+---
+
 ## Usage
 
 ### Directory Structure
@@ -164,24 +189,32 @@ For each resource (e.g., `users`), the following routes are dynamically created:
 
 ```
 AutoAPI/
-├── app/
-│   ├── models/
-│   │   └── resource.py          # Pydantic models for validation
-│   ├── routes/
-│   │   ├── apis.py              # Main API router
-│   │   ├── endpoints/
-│   │   │   ├── dynamic_router.py # Dynamic route generation
-│   │   │   ├── resource_router.py # Resource management endpoints
-│   │   ├── services/
-│   │   │   ├── resource_service.py # Logic for resource management
-│   │   │   ├── records_service.py  # Logic for record management
-│   ├── utils/
-│   │   ├── config.py            # Configuration utilities
-│   │   ├── logger.py            # Logging setup
 ├── data/                        # Root directory for resources
+│   ├── users/                   # Example resource directory
+│       ├── 1.json               # Example JSON record
+├── routes/
+│   ├── apis.py                  # Main API router
+│   ├── endpoints/
+│   │   ├── __init__.py          # Package initialization
+│   │   ├── dynamic_router.py    # Dynamic route generation
+│   │   ├── resource_router.py   # Resource management endpoints
+│   ├── services/
+│   │   ├── __init__.py          # Package initialization
+│   │   ├── resource_service.py  # Logic for resource management
+│   │   ├── records_service.py   # Logic for record management
+├── utils/
+│   ├── __init__.py              # Package initialization
+│   ├── config.py                # Configuration utilities
+│   ├── logger.py                # Logging setup
 ├── main.py                      # Application entry point
+├── Dockerfile                   # Docker configuration
+├── .dockerignore                # Docker ignore file
+├── .gitignore                   # Git ignore file
 ├── .env                         # Environment variables
-├── pyproject.toml               # Project dependencies
+├── requirements.txt             # Python dependencies
+├── pyproject.toml               # Project metadata and dependencies
+├── README.md                    # Project documentation
+├── LICENSE                      # License file
 ```
 
 ---

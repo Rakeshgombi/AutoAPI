@@ -13,7 +13,7 @@ from utils.logger import setup_logging
 setup_logging()
 
 # Initialize FastAPI app
-app = FastAPI(title="Dynamic File-Based API", version="1.0.0")
+app = FastAPI(title="AutoAPI", description="Dynamic File-Based API", version="1.0.0")
 
 # Root directory for resources
 app.include_router(apis.router)
@@ -29,7 +29,11 @@ class DataFolderEventHandler(FileSystemEventHandler):
         if event.event_type in {"created", "deleted", "modified", "moved"}:
             try:
                 # Preserve default routes (like /docs and /openapi.json)
-                default_routes = [route for route in app.router.routes if route.path in ["/docs", "/openapi.json", "/redoc", "/"]]
+                default_routes = [
+                    route
+                    for route in app.router.routes
+                    if route.path in ["/docs", "/openapi.json", "/redoc", "/"]
+                ]
 
                 # Clear existing routes and re-add default routes
                 app.router.routes.clear()
@@ -41,7 +45,9 @@ class DataFolderEventHandler(FileSystemEventHandler):
 
                 # Reset OpenAPI schema to refresh Swagger UI
                 app.openapi_schema = None
-                print(f"Routes and OpenAPI schema refreshed due to {event.event_type} event.")
+                print(
+                    f"Routes and OpenAPI schema refreshed due to {event.event_type} event."
+                )
             except Exception as e:
                 print(f"Error refreshing routes: {e}")
 
