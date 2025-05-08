@@ -13,7 +13,7 @@ from utils.logger import setup_logging
 setup_logging()
 
 # Initialize FastAPI app
-app = FastAPI(title="AutoAPI", description="Dynamic File-Based API", version="1.0.0")
+app = FastAPI(title="AutoAPI", description="Dynamic File-Based APIs", version="1.0.0")
 
 # Root directory for resources
 app.include_router(apis.router)
