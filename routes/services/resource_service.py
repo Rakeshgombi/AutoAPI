@@ -1,8 +1,9 @@
-from os import listdir, makedirs, path
 import shutil
+from os import listdir, makedirs, path
+
 from fastapi import HTTPException
 
-from app.utils.config import ROOT_DIR
+from utils.config import ROOT_DIR
 
 
 class ResourceService:

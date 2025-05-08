@@ -1,9 +1,9 @@
 from fastapi import FastAPI
-from app.routes import apis
-from app.routes.endpoints.dynamic_router import create_dynamic_routes
-from app.utils.config import ROOT_DIR
-from app.utils.logger import setup_logging
 
+from routes import apis
+from routes.endpoints.dynamic_router import create_dynamic_routes
+from utils.config import ROOT_DIR
+from utils.logger import setup_logging
 
 # Initialize logging
 setup_logging()
@@ -17,8 +17,6 @@ app.include_router(apis.router)
 
 # Add dynamic routes
 create_dynamic_routes(app, ROOT_DIR)
-
-
 
 
 @app.get("/")

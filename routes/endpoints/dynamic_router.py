@@ -3,7 +3,7 @@ import os
 from fastapi import APIRouter, FastAPI
 from fastapi.responses import JSONResponse
 
-from app.routes.services.records_service import RecordService
+from routes.services.records_service import RecordService
 
 
 def create_dynamic_routes(app: FastAPI, root_dir: str):

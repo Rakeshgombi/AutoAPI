@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 
-from app.routes.services.resource_service import ResourceService
+from routes.services.resource_service import ResourceService
 
 router = APIRouter(tags=["resource"])
 
