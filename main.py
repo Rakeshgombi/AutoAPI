@@ -3,6 +3,7 @@ from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 import threading
 import time
+from starlette.middleware.cors import CORSMiddleware
 
 from routes import apis
 from routes.endpoints.dynamic_router import create_dynamic_routes
@@ -14,6 +15,15 @@ setup_logging()
 
 # Initialize FastAPI app
 app = FastAPI(title="AutoAPI", description="Dynamic File-Based APIs", version="1.0.0")
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Root directory for resources
 app.include_router(apis.router)

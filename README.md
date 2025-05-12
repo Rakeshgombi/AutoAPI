@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **AutoAPI** is a **Dynamic File-Based API** that is a FastAPI-based project that dynamically generates RESTful APIs based on the directory and file structure of a specified root directory. It allows users to manage resources (directories) and records (JSON files) through a set of predefined and dynamically created endpoints.
+The **AutoAPI** is a **Dynamic File-Based  Mock APIs** that is a FastAPI-based project that dynamically generates RESTful APIs based on the directory and file structure of a specified root directory. It allows users to manage resources (directories) and records (JSON files) through a set of predefined and dynamically created endpoints.
 
 This project is designed to be flexible and extensible, making it easy to create, read, update, and delete resources and records without manually defining routes for each resource.
 
