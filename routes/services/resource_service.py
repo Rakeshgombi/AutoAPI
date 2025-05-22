@@ -9,7 +9,7 @@ from utils.config import ROOT_DIR
 class ResourceService:
     def _get_resource_path(self, name: str) -> str:
         """Helper to generate the resource path."""
-        return path.join(ROOT_DIR, f"{name}s")
+        return path.join(ROOT_DIR, f"{name}")
 
     def _check_resource_exists(self, resource_path: str):
         """Helper to check if a resource exists, raising an exception if not."""
@@ -19,7 +19,7 @@ class ResourceService:
     async def create_directory(self, name: str) -> dict:
         resource_path = self._get_resource_path(name)
         makedirs(resource_path, exist_ok=True)
-        return {"message": f"Directory '{name}s' created successfully."}
+        return {"message": f"Directory '{name}' created successfully."}
 
     async def list_available(self) -> list[str]:
         resources = listdir(ROOT_DIR)
@@ -29,4 +29,4 @@ class ResourceService:
         resource_path = self._get_resource_path(resource_name)
         self._check_resource_exists(resource_path)
         shutil.rmtree(resource_path)
-        return {"message": f"Resource '{resource_name}s' deleted successfully."}
+        return {"message": f"Resource '{resource_name}' deleted successfully."}

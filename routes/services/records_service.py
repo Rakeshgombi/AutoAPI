@@ -62,7 +62,7 @@ class RecordService:
         file_path = self._get_file_path(resource_path, entry_id)
         self._check_file_exists(file_path)
         with open(file_path, "w") as f:
-            json.dump(data, f)
+            f.write(json.dumps(data))
         return {"id": entry_id, **data}
 
     async def delete_record(self, resource_path: str, entry_id: str) -> dict:
